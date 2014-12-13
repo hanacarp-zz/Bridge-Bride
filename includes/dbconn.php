@@ -1,6 +1,6 @@
 <?php
 
 	$boop = new MongoClient(); // connects to localhost:27017
-	$db = $boop->bridge-bride; //connect to database
+	$db = $boop->selectDB('bridge-bride'); //connect to database
 	
 ?>
