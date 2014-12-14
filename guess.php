@@ -3,7 +3,7 @@
 	include "includes/check_subset.php"; //the function that validates input
 	include 'includes/dbconn.php';
 	
-	$document_id = $_POST['_id']; // get the _id of the mongo document so we can find the answer...
+	$document_id = $_POST['id']; // get the _id of the mongo document so we can find the answer...
 	$document_id = new MongoId($document_id); // ...and convert it to the right datatype.
 	
 	$query = array("_id" => $document_id); 
@@ -22,7 +22,6 @@
 		preg_match_all($reg,$input,$matches); // ...grab all of the words entered.
 		
 		if(count($matches[1]) != 2){ // make sure there are only two words...
-			echo "oops";
 			$message = "What's this? The answer must be TWO WORDS long!";
 		} else{
 			$bridge = str_split($matches[1][0]); // load the letters of the first word into an array...
@@ -65,14 +64,7 @@
 			$message = "Having trouble? The answer must be TWO WORDS long! Solve this riddle!"; // if the answer field is blank, show this error.
 		}
 	
-?>
 
-<html>
-	<head>
-		<title>bridge bride!</title>
-	</head>
-	
-	<body>
-		<p>The Quiz Master says: <?php echo $message;?></p>
-	</body>
-</html>
+echo $message;
+
+?>
